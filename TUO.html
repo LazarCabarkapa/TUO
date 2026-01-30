@@ -1,10 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sr">
 <head>
     <link rel="stylesheet" href="TUO.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TUO | Rent a car i mehanicarski servis</title>
+        <meta name="description" content="TUO — rent a car i mehaničarski servis. Rezerviši vozilo ili zakaži servis brzo i pouzdano.">
+<link rel="canonical" href="https://tvojdomen.com/">
+<meta property="og:title" content="TUO | Rent a car i mehaničarski servis">
+<meta property="og:description" content="Porodična firma — čista vozila, fer cene, servis koji rešava problem iz prve.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tvojdomen.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
     <script src="https://www.trustpilot.com/assets/tp-shared/tp-embed.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
@@ -754,6 +761,115 @@
             color: var(--muted);
         }
 
+        .section-title--reviews {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .rating-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            border-radius: 18px;
+            background: var(--card);
+            border: 1px solid #ff8c00;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+            width: 100%;
+        }
+
+        .rating-badge__brand {
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            font-size: 1.05rem;
+            color: #ffffff;
+        }
+
+        .rating-stars {
+            display: inline-flex;
+            gap: 4px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .rating-stars span {
+            color: #ff8c00;
+        }
+
+        .rating-stars .star-half {
+            color: transparent;
+            background: linear-gradient(90deg, #ff8c00 50%, #4a3f38 50%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .rating-score {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .rating-score .rating-max {
+            color: #d0d0d0;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-left: 4px;
+        }
+
+        .rating-based {
+            font-size: 0.78rem;
+            color: #d0d0d0;
+            margin-left: auto;
+        }
+
+        .footer-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-social {
+            display: grid;
+            gap: 8px;
+            justify-items: center;
+        }
+
+        .footer-label {
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #ff8c00;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+            transition: all 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffa500;
+            border-bottom-color: #ffa500;
+        }
+
+        @media (max-width: 720px) {
+            .footer-grid {
+                flex-direction: column;
+            }
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(18px); }
@@ -1144,12 +1260,24 @@
 
         <section id="recenzije">
         <div class="wrap">
-            <div class="section-title">
+            <div class="section-title section-title--reviews">
                 <div>
                     <div class="eyebrow" data-i18n="reviews_eyebrow">Recenzije</div>
                     <h2 data-i18n="reviews_title">Šta kažu naši klijenti</h2>
                 </div>
                 <p data-i18n="reviews_text">Mnogo zadovoljnih putnika koji nam veruju za njihove putnje i popravke.</p>
+                <div class="rating-badge" aria-label="Prosecna Google ocena 5 od 5">
+                    <div class="rating-badge__brand">TUO</div>
+                    <div class="rating-stars" aria-hidden="true">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                    <div class="rating-score"><span class="rating-value">5.0</span><span class="rating-max">/5</span></div>
+                    <div class="rating-based" data-i18n="reviews_rating_based">Na osnovu Google recenzija</div>
+                </div>
             </div>
             <div class="card reviews-frame">
                 <div class="reviews-marquee" aria-label="Recenzije klijenata">
@@ -1289,8 +1417,17 @@
     </section>
 
     <footer>
-        <div class="wrap">
+        <div class="wrap footer-grid">
             <span data-i18n="footer">TUO &copy; 2026. Sva prava zadrzana.</span>
+            <div class="footer-social">
+                <div class="footer-label" data-i18n="footer_follow">Zapratite nas</div>
+                <div class="footer-links">
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="WhatsApp">WhatsApp</a>
+                    <a href="#" aria-label="Viber">Viber</a>
+                </div>
+            </div>
         </div>
     </footer>
     
@@ -1425,6 +1562,7 @@
                 reviews_eyebrow: "Recenzije",
                 reviews_title: "Sta kazu nasi klijenti",
                 reviews_text: "Mnogo zadovoljnih putnika koji nam veruju za njihove putnje i popravke.",
+                reviews_rating_based: "Na osnovu Google recenzija",
                 reviews_btn: "Pogledaj sve recenzije na Google-u",
                 contact_eyebrow: "Kontakt",
                 contact_title: "Tu smo kad god vam zatreba",
@@ -1444,6 +1582,7 @@
                 location_eyebrow: "Lokacija",
                 location_title: "Pronadji nas na mapi",
                 location_text: "Posetite nas ili pozovite - tu smo za vas 24/7.",
+                footer_follow: "Zapratite nas",
                 footer: "TUO © 2026. Sva prava zadrzana."
             },
             en: {
@@ -1528,6 +1667,7 @@
                 reviews_eyebrow: "Reviews",
                 reviews_title: "What our clients say",
                 reviews_text: "Many satisfied customers who trust us for rentals and repairs.",
+                reviews_rating_based: "Based on Google reviews",
                 reviews_btn: "See all reviews on Google",
                 contact_eyebrow: "Contact",
                 contact_title: "We are here when you need us",
@@ -1547,6 +1687,7 @@
                 location_eyebrow: "Location",
                 location_title: "Find us on the map",
                 location_text: "Visit us or call - we are here for you 24/7.",
+                footer_follow: "Follow us",
                 footer: "TUO © 2026. All rights reserved."
             },
             ru: {
@@ -1631,6 +1772,7 @@
                 reviews_eyebrow: "Отзывы",
                 reviews_title: "Что говорят клиенты",
                 reviews_text: "Многие довольные клиенты, доверяющие нам аренду и сервис.",
+                reviews_rating_based: "На основе отзывов Google",
                 reviews_btn: "Все отзывы на Google",
                 contact_eyebrow: "Контакты",
                 contact_title: "Мы рядом, когда нужно",
@@ -1650,6 +1792,7 @@
                 location_eyebrow: "Локация",
                 location_title: "Найдите нас на карте",
                 location_text: "Посетите нас или позвоните - мы доступны 24/7.",
+                footer_follow: "Подписывайтесь",
                 footer: "TUO © 2026. Все права защищены."
             },
             de: {
@@ -1734,6 +1877,7 @@
                 reviews_eyebrow: "Bewertungen",
                 reviews_title: "Was unsere Kunden sagen",
                 reviews_text: "Viele zufriedene Kunden vertrauen uns Miete und Service an.",
+                reviews_rating_based: "Basierend auf Google-Bewertungen",
                 reviews_btn: "Alle Google-Bewertungen ansehen",
                 contact_eyebrow: "Kontakt",
                 contact_title: "Wir sind da, wenn Sie uns brauchen",
@@ -1753,6 +1897,7 @@
                 location_eyebrow: "Standort",
                 location_title: "Finden Sie uns auf der Karte",
                 location_text: "Besuchen oder anrufen - wir sind 24/7 fuer Sie da.",
+                footer_follow: "Folgen Sie uns",
                 footer: "TUO © 2026. Alle Rechte vorbehalten."
             }
         };
