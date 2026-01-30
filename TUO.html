@@ -4,11 +4,11 @@
     <link rel="stylesheet" href="TUO.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUO | Rent a car i mehanicarski servis</title>
-        <meta name="description" content="TUO — rent a car i mehaničarski servis. Rezerviši vozilo ili zakaži servis brzo i pouzdano.">
+    <title>TUO | Rent a car i limarija</title>
+        <meta name="description" content="TUO — rent a car i limarija. Cista vozila, fer cene i limarijski radovi uz jasnu ponudu.">
 <link rel="canonical" href="https://tvojdomen.com/">
-<meta property="og:title" content="TUO | Rent a car i mehaničarski servis">
-<meta property="og:description" content="Porodična firma — čista vozila, fer cene, servis koji rešava problem iz prve.">
+<meta property="og:title" content="TUO | Rent a car i limarija">
+<meta property="og:description" content="Porodicna firma — cista vozila, fer cene i limarija uz jasnu ponudu.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://tvojdomen.com/images/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -196,6 +196,9 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
         }
 
         .btn-primary {
@@ -203,6 +206,29 @@
             color: #fff;
             box-shadow: 0 10px 20px rgba(212, 107, 47, 0.25);
             border: 1px solid #ff8c00;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .btn-primary::after {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(110deg, rgba(255, 255, 255, 0), rgba(255, 206, 140, 0.85), rgba(255, 255, 255, 0));
+            transform: translateX(-140%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 16px 28px rgba(255, 140, 0, 0.35);
+            background: #ffa500;
+        }
+
+        .btn-primary:hover::after {
+            opacity: 1;
+            animation: sweep-right-primary 1.1s ease forwards;
         }
 
         .btn-secondary {
@@ -211,21 +237,87 @@
             border-color: var(--stroke);
         }
 
+        .btn-secondary::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(120deg, rgba(255, 140, 0, 0), rgba(255, 140, 0, 0.55), rgba(255, 140, 0, 0));
+            transform: translateX(-140%);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            color: var(--brand);
+            border-color: var(--brand);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(255, 140, 0, 0.18);
+        }
+
+        .btn-secondary:hover::before {
+            opacity: 1;
+            animation: sweep-right-secondary 1.4s ease forwards;
+        }
+
+        @keyframes sweep-right-primary {
+            0% { transform: translateX(-140%); }
+            100% { transform: translateX(140%); }
+        }
+
+        @keyframes sweep-right-secondary {
+            0% { transform: translateX(-140%); }
+            100% { transform: translateX(140%); }
+        }
+        
         .hero-card {
             background: #2a2420;
-            border-radius: 28px;
-            padding: 28px;
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid var(--stroke);
             box-shadow: var(--shadow);
             border: 2px solid #ff8c00;
         }
 
-        .hero-card h3 {
-            font-size: 1.4rem;
-            color: #ff8c00;
+        .hero-card--primary {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, rgba(20, 18, 16, 0.98), rgba(54, 43, 35, 0.95));
+            border: 2px solid rgba(255, 140, 0, 0.45);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 140, 0, 0.18);
         }
 
-        .hero-card p {
-            color: #ffffff;
+        .hero-card--primary::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            right: -60px;
+            top: -90px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.45), transparent 70%);
+            opacity: 0.9;
+        }
+
+        .hero-card--primary::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255, 140, 0, 0.12), transparent 55%);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .hero-card--primary h3 {
+            font-size: 1.6rem;
+            color: #ffb454;
+            margin-bottom: 10px;
+        }
+
+        .hero-card--primary p {
+            color: #f2e9df;
         }
 
         .stat-grid {
@@ -240,6 +332,13 @@
             padding: 16px;
             border-radius: 18px;
             border: 1px dashed #ff8c00;
+            color: #ffffff;
+        }
+
+        .hero-card--primary .stat {
+            background: rgba(12, 11, 10, 0.75);
+            border: 1px solid rgba(255, 140, 0, 0.25);
+            box-shadow: inset 0 0 18px rgba(255, 140, 0, 0.08);
         }
 
         .stat strong {
@@ -248,8 +347,13 @@
             color: #ff8c00;
         }
 
-        .stat {
-            color: #ffffff;
+        .hero-card--primary .stat strong {
+            font-size: 1.35rem;
+            color: #ffb454;
+        }
+
+        .hero-card--primary .stat span {
+            color: #e7ddd1;
         }
 
         section {
@@ -323,8 +427,7 @@
             overflow: hidden;
             margin-bottom: 12px;
             box-shadow: 0 8px 20px rgba(255, 140, 0, 0.2);
-            border: 2px solid #ff8c00;
-        }
+            }
 
         .fleet-card-image img {
             width: 100%;
@@ -433,20 +536,42 @@
 
         .cta-panel .btn {
             display: inline-block;
-            background: #000000;
+            background: #0b0b0b;
             color: #ff9b2b;
             font-weight: 800;
             padding: 14px 56px;
             border-radius: 999px;
             text-decoration: none;
             box-shadow: 0 14px 30px rgba(0,0,0,0.45), inset 0 -6px 14px rgba(255,140,0,0.04);
-            border: none;
+            border: 1px solid rgba(255,140,0,0.25);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+        }
+
+        .cta-panel .btn::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(120deg, rgba(255,140,0,0.35), rgba(255,140,0,0) 60%);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .cta-panel .btn > * {
+            position: relative;
+            z-index: 1;
         }
 
         .cta-panel .btn:hover {
-            background: #111111;
-            transform: translateY(-2px);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.55), inset 0 -8px 18px rgba(255,140,0,0.06);
+            background: #131313;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,140,0,0.45), 0 0 22px rgba(255,140,0,0.35), inset 0 -8px 18px rgba(255,140,0,0.08);
+        }
+
+        .cta-panel .btn:hover::before {
+            opacity: 1;
         }
         @media (max-width: 720px) {
             .cta-panel {
@@ -483,6 +608,113 @@
             gap: 12px;
         }
 
+        
+        
+        .contact-card {
+            background: #2a2420;
+            border-radius: 18px;
+            padding: 22px;
+            display: grid;
+            gap: 14px;
+        }
+
+        .contact-card-title {
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            font-size: 1.05rem;
+            color: #ff8c00;
+        }
+
+        .contact-card-sub {
+            color: #d0d0d0;
+            font-size: 0.95rem;
+        }
+
+        .contact-card-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .contact-card-item {
+            background: #3d3530;
+            border-radius: 12px;
+            padding: 12px;
+            border: 1px solid #ff8c00;
+        }
+
+        .contact-card-label {
+            display: block;
+            color: #ffa500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .contact-card-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .contact-card-number {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .copy-btn {
+            background: #0b0b0b;
+            color: #ffffff;
+            border: 1px solid rgba(255,140,0,0.35);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+            background: #111111;
+        }.contact-actions {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid rgba(255,140,0,0.25);
+            background: #0b0b0b;
+            color: #ffffff;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,140,0,0.35);
+        }
+
+        .contact-btn.whatsapp {
+            border-color: rgba(37, 211, 102, 0.5);
+        }
+
+        .contact-btn.viber {
+            border-color: rgba(142, 53, 243, 0.5);
+        }
+
         .info-list li {
             padding: 14px 16px;
             border-radius: 16px;
@@ -511,7 +743,6 @@
             background: #3d3530;
             padding: 25px;
             border-radius: 16px;
-            border: 2px solid #ff8c00;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -659,8 +890,7 @@
             padding: 20px;
             background: #2a2420;
             border-radius: 16px;
-            border: 2px solid #ff8c00;
-        }
+            }
 
         .google-reviews-embed {
             width: 100%;
@@ -673,7 +903,6 @@
             height: 400px;
             border-radius: 16px;
             overflow: hidden;
-            border: 2px solid #ff8c00;
             box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
             margin-top: 20px;
         }
@@ -896,7 +1125,6 @@
             background: #2a2420;
             padding: 25px;
             border-radius: 16px;
-            border: 2px solid #ff8c00;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -996,14 +1224,14 @@
                 <div class="logo-badge">TUO</div>
                 <div>
                     TUO
-                    <div class="eyebrow" style="letter-spacing: 0.12em;" data-i18n="logo_tag">rent a car / servis</div>
+                    <div class="eyebrow" style="letter-spacing: 0.12em;" data-i18n="logo_tag">rent a car / limarija</div>
                 </div>
             </div>
             <nav>
                 <a href="#usluge" data-i18n="nav_services">Usluge</a>
                 <a href="#flota" data-i18n="nav_fleet">Flota</a>
                 <a href="#recenzije" data-i18n="nav_reviews">Recenzije</a>
-                <a href="#servis" data-i18n="nav_service">Servis</a>
+                <a href="#servis" data-i18n="nav_service">Limarija</a>
                 <a href="#kontakt" data-i18n="nav_contact">Kontakt</a>
             </nav>
         </div>
@@ -1013,24 +1241,24 @@
         <div class="wrap hero-grid">
             <div>
                 <div class="eyebrow" data-i18n="hero_eyebrow">Pouzdano, brzo, lokalno</div>
-                <h1 data-i18n="hero_title">TUO - rent a car i mehanicarski servis na jednom mestu.</h1>
-                <p data-i18n="hero_text">Porodicna firma sa fokusom na ciste automobile, fer cene i servis koji resava problem iz prve. Rezervisi vozilo ili zakazi pregled u par koraka.</p>
+                <h1 data-i18n="hero_title">TUO - rent a car i limarija na jednom mestu.</h1>
+                <p data-i18n="hero_text">Porodicna firma sa fokusom na cista vozila, fer cene i limarijske radove uz jasnu ponudu prije rada. Rezervisite auto ili zakazite limariju u par koraka.</p>
                 <div class="cta-row">
-                    <a class="btn btn-primary" href="#kontakt" data-i18n="hero_cta_primary">Rezervisi vozilo</a>
-                    <a class="btn btn-secondary" href="#servis" data-i18n="hero_cta_secondary">Zakazi servis</a>
+                <a class="btn btn-primary" href="#flota" data-i18n="hero_cta_primary">Rezervisi vozilo</a>
+                    <a class="btn btn-secondary" href="#servis" data-i18n="hero_cta_secondary">Zakazi limariju</a>
                 </div>
             </div>
-            <div class="hero-card">
-                <h3 data-i18n="hero_card_title">Brza ponuda danas</h3>
-                <p data-i18n="hero_card_text">Posaljite kratku poruku i dobijate odgovor u roku od 30 minuta.</p>
+            <div class="hero-card hero-card--primary">
+                    <h3 data-i18n="hero_card_title">Brza procjena limarije</h3>
+                    <p data-i18n="hero_card_text">Posaljite kratak opis ostecenja i dobijate odgovor u roku od 30 minuta.</p>
                 <div class="stat-grid">
                     <div class="stat">
-                        <strong>20+</strong>
+                        <strong>40+</strong>
                         <span data-i18n="hero_stat_1">vozila spremno</span>
                     </div>
                     <div class="stat">
                         <strong>24/7</strong>
-                        <span data-i18n="hero_stat_2">pomoc na putu</span>
+                        <span data-i18n="hero_stat_2">dostupno</span>
                     </div>
                     <div class="stat">
                         <strong>10+</strong>
@@ -1046,9 +1274,9 @@
             <div class="section-title">
                 <div>
                     <div class="eyebrow" data-i18n="services_eyebrow">Usluge</div>
-                    <h2 data-i18n="services_title">Rent a car + mehanicarski servis</h2>
+                    <h2 data-i18n="services_title">Rent a car + limarija</h2>
                 </div>
-                <p data-i18n="services_text">Jedan tim za sve: gradske voznje, duzi put, popravke, dijagnostika i priprema za tehnicki.</p>
+                <p data-i18n="services_text">Jedan tim za sve: iznajmljivanje vozila i limarijski radovi uz jasnu procjenu.</p>
             </div>
             <div class="card-grid">
                 <div class="card">
@@ -1062,14 +1290,14 @@
                     <p data-i18n="services_card2_text">Preuzimanje i vracanje vozila na dogovorenoj lokaciji.</p>
                 </div>
                 <div class="card">
-                    <span class="pill" data-i18n="services_card3_tag">Servis</span>
-                    <h3 data-i18n="services_card3_title">Brza dijagnostika</h3>
-                    <p data-i18n="services_card3_text">Precizna provera kvarova uz jasnu procenu troskova.</p>
+                    <span class="pill" data-i18n="services_card3_tag">Limarija</span>
+                    <h3 data-i18n="services_card3_title">Popravka i poravnanje</h3>
+                    <p data-i18n="services_card3_text">Uklanjanje ostecenja, zamjena elemenata i priprema za lak.</p>
                 </div>
                 <div class="card">
-                    <span class="pill" data-i18n="services_card4_tag">Servis</span>
-                    <h3 data-i18n="services_card4_title">Redovan servis</h3>
-                    <p data-i18n="services_card4_text">Mali i veliki servis, kocnice, trap, klima i priprema za put.</p>
+                    <span class="pill" data-i18n="services_card4_tag">Limarija</span>
+                    <h3 data-i18n="services_card4_title">Precizna boja i sjaj</h3>
+                    <p data-i18n="services_card4_text">Korekcija boje, lakiranje po standardu i zastita.</p>
                 </div>
             </div>
         </div>
@@ -1215,19 +1443,19 @@
     <section id="servis">
         <div class="wrap split">
             <div>
-                <div class="eyebrow" data-i18n="service_eyebrow">Servis</div>
-                <h2 data-i18n="service_title">Mehanicarski tim koji radi brzo i cisto</h2>
-                <p data-i18n="service_text">Vlasnik vodi svaki posao licno, a pre bilo kakve intervencije dobijate jasnu ponudu.</p>
+                <div class="eyebrow" data-i18n="service_eyebrow">Limarija</div>
+                <h2 data-i18n="service_title">Limarija i lakiranje bez stresa</h2>
+                <p data-i18n="service_text">Vlasnik vodi svaki posao licno, a prije bilo kakve intervencije dobijate jasnu ponudu.</p>
                 <ul class="info-list">
-                    <li data-i18n="service_list_1">Pregled i dijagnostika u istom danu</li>
-                    <li data-i18n="service_list_2">Originalni ili provereni delovi po izboru</li>
-                    <li data-i18n="service_list_3">Izvestaj o svim radovima i preporukama</li>
+                    <li data-i18n="service_list_1">Procjena stete i dogovor u istom danu</li>
+                    <li data-i18n="service_list_2">Ravnanje, varenje i zamjena elemenata</li>
+                    <li data-i18n="service_list_3">Lakiranje uz precizno poklapanje boje</li>
                 </ul>
             </div>
             <div class="cta-panel">
-                <h3 data-i18n="service_cta_title">Treba vam termin?</h3>
-                <p data-i18n="service_cta_text">Pozovite ili posaljite poruku, a mi proveravamo stanje i potvrdjujemo termin.</p>
-                <a class="btn btn-primary" href="#kontakt" data-i18n="service_cta_btn">Zakazi odmah</a>
+                <h3 data-i18n="service_cta_title">Treba vam limarija?</h3>
+                <p data-i18n="service_cta_text">Pozovite ili posaljite poruku, dogovaramo termin i rok.</p>
+                <a class="btn btn-primary" href="#kontakt" data-i18n="service_cta_btn">Zakazi limariju</a>
             </div>
         </div>
     </section>
@@ -1247,12 +1475,12 @@
                     <p data-i18n="why_card1_text">Nema skrivenih troskova - sve dogovoreno unapred.</p>
                 </div>
                 <div class="card">
-                    <h3 data-i18n="why_card2_title">Pomoc na putu</h3>
-                    <p data-i18n="why_card2_text">Brza asistencija i zamensko vozilo u hitnim situacijama.</p>
+                    <h3 data-i18n="why_card2_title">Zamensko vozilo</h3>
+                    <p data-i18n="why_card2_text">U slucaju limarije obezbedjujemo vozilo po dogovoru.</p>
                 </div>
                 <div class="card">
-                    <h3 data-i18n="why_card3_title">Sigurnost</h3>
-                    <p data-i18n="why_card3_text">Vozila i servis prolaze redovne provere kvaliteta.</p>
+                    <h3 data-i18n="why_card3_title">Kvalitet limarije</h3>
+                    <p data-i18n="why_card3_text">Precizan rad, dobar lak i kontrola zavrsne obrade.</p>
                 </div>
             </div>
         </div>
@@ -1265,15 +1493,15 @@
                     <div class="eyebrow" data-i18n="reviews_eyebrow">Recenzije</div>
                     <h2 data-i18n="reviews_title">Šta kažu naši klijenti</h2>
                 </div>
-                <p data-i18n="reviews_text">Mnogo zadovoljnih putnika koji nam veruju za njihove putnje i popravke.</p>
+                <p data-i18n="reviews_text">Mnogi zadovoljni klijenti koji nam vjeruju za rent a car i limariju.</p>
                 <div class="rating-badge" aria-label="Prosecna Google ocena 5 od 5">
                     <div class="rating-badge__brand">TUO</div>
                     <div class="rating-stars" aria-hidden="true">
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
                     </div>
                     <div class="rating-score"><span class="rating-value">5.0</span><span class="rating-max">/5</span></div>
                     <div class="rating-based" data-i18n="reviews_rating_based">Na osnovu Google recenzija</div>
@@ -1291,7 +1519,7 @@
                         <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                         <div class="review-text">Fer cijene i profesionalan odnos. Sve u dogovoru.</div>
                         <strong>Milica V.</strong>
-                        <div class="review-meta">Servis</div>
+                        <div class="review-meta">Limarija</div>
                     </div>
                     <div class="review-tile">
                         <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -1303,7 +1531,7 @@
                         <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                         <div class="review-text">Uradili dijagnostiku istog dana, objasnili sve jasno.</div>
                         <strong>Marko D.</strong>
-                        <div class="review-meta">Servis</div>
+                        <div class="review-meta">Limarija</div>
                     </div>
                     <div class="review-tile">
                         <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -1328,7 +1556,7 @@
                         <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                         <div class="review-text">Fer cijene i profesionalan odnos. Sve u dogovoru.</div>
                         <strong>Milica V.</strong>
-                        <div class="review-meta">Servis</div>
+                        <div class="review-meta">Limarija</div>
                     </div>
                     <div class="review-tile">
                         <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -1340,7 +1568,7 @@
                         <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                         <div class="review-text">Uradili dijagnostiku istog dana, objasnili sve jasno.</div>
                         <strong>Marko D.</strong>
-                        <div class="review-meta">Servis</div>
+                        <div class="review-meta">Limarija</div>
                     </div>
                     <div class="review-tile">
                         <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -1358,7 +1586,7 @@
                 <div class="reviews-mask" aria-hidden="true"></div>
             </div>
             <div style="margin-top: 26px; display: flex; justify-content: center;">
-                <a class="google-reviews-link" href="https://www.google.com/search?client=opera-gx&q=tuo+rent+a+car&sourceid=opera&ie=UTF-8&oe=UTF-8#lrd=0x134d95bbab1a3341:0xe109918228f796af,1,,,," target="_blank" rel="noopener" data-i18n="reviews_btn">
+                <a class="google-reviews-link" href="https://www.google.com/search?client=opera-gx&q=tuo+rent+a+car+limarija&sourceid=opera&ie=UTF-8&oe=UTF-8#lrd=0x134d95bbab1a3341:0xe109918228f796af,1,,,," target="_blank" rel="noopener" data-i18n="reviews_btn">
                     Pogledaj sve recenzije na Google-u
                 </a>
             </div>
@@ -1370,7 +1598,7 @@
             <div>
                 <div class="eyebrow" data-i18n="contact_eyebrow">Kontakt</div>
                 <h2 data-i18n="contact_title">Tu smo kad god vam zatreba</h2>
-                <p data-i18n="contact_text">Posaljite upit za vozilo ili servis. Odgovaramo brzo.</p>
+                <p data-i18n="contact_text">Posaljite upit za rent a car ili limariju. Odgovaramo brzo.</p>
                 <ul class="info-list">
                     <li><span data-i18n="contact_phone">Telefon</span>: +381 6X XXX XXXX</li>
                     <li><span data-i18n="contact_email">Email</span>: info@tuo.rs</li>
@@ -1378,23 +1606,33 @@
                 </ul>
             </div>
             <div class="hero-card">
-                <h3 data-i18n="contact_form_title">Brzi upit</h3>
-                <p data-i18n="contact_form_text">Unesite osnovne podatke i mi vas kontaktiramo.</p>
-                <form>
-                    <label>
-                        <span data-i18n="contact_name_label">Ime i prezime</span>
-                        <input type="text" placeholder="Vase ime" data-i18n-placeholder="contact_name_ph" style="width:100%;margin-top:6px;padding:10px 12px;border-radius:12px;border:1px solid var(--stroke);">
-                    </label>
-                    <label>
-                        <span data-i18n="contact_phone_label">Telefon</span>
-                        <input type="tel" placeholder="Broj telefona" data-i18n-placeholder="contact_phone_ph" style="width:100%;margin-top:6px;padding:10px 12px;border-radius:12px;border:1px solid var(--stroke);">
-                    </label>
-                    <label>
-                        <span data-i18n="contact_message_label">Poruka</span>
-                        <textarea rows="4" placeholder="Rent ili servis?" data-i18n-placeholder="contact_message_ph" style="width:100%;margin-top:6px;padding:10px 12px;border-radius:12px;border:1px solid var(--stroke);"></textarea>
-                    </label>
-                    <button class="btn btn-primary" type="submit" data-i18n="contact_submit">Posalji upit</button>
-                </form>
+                                <div class="contact-card">
+                    <div class="contact-card-title">REZERVISITE</div>
+                    <div class="contact-card-sub">Pozovite ili posaljite poruku</div>
+                    <div class="contact-card-list">
+                        <div class="contact-card-item">
+                            <span class="contact-card-label">Glavni broj</span>
+                            <div class="contact-card-row">
+                                <a class="contact-card-number" href="tel:+38267111222" data-copy="067 111 222">067 111 222</a>
+                                <button class="copy-btn" type="button" data-copy-btn="067 111 222">Kopiraj</button>
+                            </div>
+                        </div>
+                        <div class="contact-card-item">
+                            <span class="contact-card-label">Rezervacije</span>
+                            <div class="contact-card-row">
+                                <a class="contact-card-number" href="tel:+38267222333" data-copy="067 222 333">067 222 333</a>
+                                <button class="copy-btn" type="button" data-copy-btn="067 222 333">Kopiraj</button>
+                            </div>
+                        </div>
+                        <div class="contact-card-item">
+                            <span class="contact-card-label">Limarija</span>
+                            <div class="contact-card-row">
+                                <a class="contact-card-number" href="tel:+38267333444" data-copy="067 333 444">067 333 444</a>
+                                <button class="copy-btn" type="button" data-copy-btn="067 333 444">Kopiraj</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1406,7 +1644,7 @@
             <div class="section-title">
                 <div>
                     <div class="eyebrow" data-i18n="location_eyebrow">Lokacija</div>
-                    <h2 data-i18n="location_title">Pronađi nas na mapi</h2>
+                    <h2 data-i18n="location_title">Pronadi nas na mapi</h2>
                 </div>
                 <p data-i18n="location_text">Posetite nas ili pozovite - tu smo za vas 24/7.</p>
             </div>
@@ -1422,8 +1660,8 @@
             <div class="footer-social">
                 <div class="footer-label" data-i18n="footer_follow">Zapratite nas</div>
                 <div class="footer-links">
-                    <a href="#" aria-label="Facebook">Facebook</a>
-                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=100066720438867" aria-label="Facebook">Facebook</a>
+                    <a href="https://www.instagram.com/tuorentacar/" aria-label="Instagram">Instagram</a>
                     <a href="#" aria-label="WhatsApp">WhatsApp</a>
                     <a href="#" aria-label="Viber">Viber</a>
                 </div>
@@ -1432,9 +1670,9 @@
     </footer>
     
     <script>
-        // Google Reviews Widget - Učitavanje Google Business recenzija
+        // Google Reviews Widget - Ucitavanje Google Business recenzija
         (function() {
-            // Google Places Widget za TUO rent a car
+            // Google Places Widget za TUO Rent a car
             const placeId = '0xe109918228f796af'; // Place ID za TUO
             const placeName = 'Rent car TUO';
             
@@ -1458,9 +1696,9 @@
                     <div style="color: #ffffff; font-weight: 700; font-size: 1.1rem;">5.0 Ocjena</div>
                     <div style="color: #d0d0d0; font-size: 0.9rem;">Na osnovu Google recenzija</div>
                     <div style="margin-top: 15px; width: 100%; max-width: 300px;">
-                        <a href="https://www.google.com/search?q=tuo+rent+a+car+donji+kokoti" target="_blank" 
+                        <a href="https://www.google.com/search?q=tuo+rent+a+car+limarija+donji+kokoti" target="_blank" 
                            style="display: inline-block; padding: 10px 20px; background: #ff8c00; color: #000000; text-decoration: none; border-radius: 8px; font-weight: 700; transition: all 0.3s;">
-                            Pročitaj Google recenzije
+                            Procitaj Google recenzije
                         </a>
                     </div>
                 `;
@@ -1468,7 +1706,7 @@
                 badgeContainer.appendChild(badge);
             }
             
-            // Učitaj badge kada se stranica učita
+            // Ucitaj badge kada se stranica ucita
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', loadGoogleReviews);
             } else {
@@ -1482,37 +1720,37 @@
         const translations = {
             me: {
                 lang: "Jezik",
-                logo_tag: "rent a car / servis",
+                logo_tag: "rent a car / limarija",
                 nav_services: "Usluge",
                 nav_fleet: "Flota",
                 nav_reviews: "Recenzije",
-                nav_service: "Servis",
+                nav_service: "Limarija",
                 nav_contact: "Kontakt",
                 hero_eyebrow: "Pouzdano, brzo, lokalno",
-                hero_title: "TUO - rent a car i mehanicarski servis na jednom mestu.",
-                hero_text: "Porodicna firma sa fokusom na ciste automobile, fer cene i servis koji resava problem iz prve. Rezervisi vozilo ili zakazi pregled u par koraka.",
+                hero_title: "TUO - rent a car i limarija na jednom mestu.",
+                hero_text: "Porodicna firma sa fokusom na cista vozila, fer cene i limarijske radove uz jasnu ponudu prije rada. Rezervisite auto ili zakazite limariju u par koraka.",
                 hero_cta_primary: "Rezervisi vozilo",
-                hero_cta_secondary: "Zakazi servis",
-                hero_card_title: "Brza ponuda danas",
-                hero_card_text: "Posaljite kratku poruku i dobijate odgovor u roku od 30 minuta.",
+                hero_cta_secondary: "Zakazi limariju",
+                hero_card_title: "Brza procjena limarije",
+                hero_card_text: "Posaljite kratak opis ostecenja i dobijate odgovor u roku od 30 minuta.",
                 hero_stat_1: "vozila spremno",
-                hero_stat_2: "pomoc na putu",
+                hero_stat_2: "dostupno",
                 hero_stat_3: "godina iskustva",
                 services_eyebrow: "Usluge",
-                services_title: "Rent a car + mehanicarski servis",
-                services_text: "Jedan tim za sve: gradske voznje, duzi put, popravke, dijagnostika i priprema za tehnicki.",
+                services_title: "Rent a car + limarija",
+                services_text: "Jedan tim za sve: iznajmljivanje vozila i limarijski radovi uz jasnu procjenu.",
                 services_card1_tag: "Rent a car",
                 services_card1_title: "Vozila za svaki plan",
                 services_card1_text: "Od malih gradskih auta do vecih modela za porodicu ili posao.",
                 services_card2_tag: "Rent a car",
                 services_card2_title: "Dostava na adresu",
                 services_card2_text: "Preuzimanje i vracanje vozila na dogovorenoj lokaciji.",
-                services_card3_tag: "Servis",
-                services_card3_title: "Brza dijagnostika",
-                services_card3_text: "Precizna provera kvarova uz jasnu procenu troskova.",
-                services_card4_tag: "Servis",
-                services_card4_title: "Redovan servis",
-                services_card4_text: "Mali i veliki servis, kocnice, trap, klima i priprema za put.",
+                services_card3_tag: "Limarija",
+                services_card3_title: "Popravka i poravnanje",
+                services_card3_text: "Uklanjanje ostecenja, zamjena elemenata i priprema za lak.",
+                services_card4_tag: "Limarija",
+                services_card4_title: "Precizna boja i sjaj",
+                services_card4_text: "Korekcija boje, lakiranje po standardu i zastita.",
                 fleet_eyebrow: "Flota",
                 fleet_title: "Vozila koja ljudi najvise traze",
                 fleet_text: "Biramo pouzdane modele, redovno servisirane i spremne za bezbednu voznju.",
@@ -1541,43 +1779,43 @@
                 fleet_team_title: "Kombi",
                 fleet_team_text: "Idealan za grupe i duge putove bez stresa",
                 price_team: "od 65 EUR/dan",
-                service_eyebrow: "Servis",
-                service_title: "Mehanicarski tim koji radi brzo i cisto",
-                service_text: "Vlasnik vodi svaki posao licno, a pre bilo kakve intervencije dobijate jasnu ponudu.",
-                service_list_1: "Pregled i dijagnostika u istom danu",
-                service_list_2: "Originalni ili provereni delovi po izboru",
-                service_list_3: "Izvestaj o svim radovima i preporukama",
-                service_cta_title: "Treba vam termin?",
-                service_cta_text: "Pozovite ili posaljite poruku, a mi proveravamo stanje i potvrdjujemo termin.",
-                service_cta_btn: "Zakazi odmah",
+                service_eyebrow: "Limarija",
+                service_title: "Limarija i lakiranje bez stresa",
+                service_text: "Vlasnik vodi svaki posao licno, a prije bilo kakve intervencije dobijate jasnu ponudu.",
+                service_list_1: "Procjena stete i dogovor u istom danu",
+                service_list_2: "Ravnanje, varenje i zamjena elemenata",
+                service_list_3: "Lakiranje uz precizno poklapanje boje",
+                service_cta_title: "Treba vam limarija?",
+                service_cta_text: "Pozovite ili posaljite poruku, dogovaramo termin i rok.",
+                service_cta_btn: "Zakazi limariju",
                 why_eyebrow: "Zasto TUO",
                 why_title: "Porodicna firma sa lokalnim poverenjem",
                 why_text: "Radimo otvoreno, drzimo se dogovora i mislimo o dugorocnoj saradnji.",
                 why_card1_title: "Transparentne cene",
                 why_card1_text: "Nema skrivenih troskova - sve dogovoreno unapred.",
-                why_card2_title: "Pomoc na putu",
-                why_card2_text: "Brza asistencija i zamensko vozilo u hitnim situacijama.",
-                why_card3_title: "Sigurnost",
-                why_card3_text: "Vozila i servis prolaze redovne provere kvaliteta.",
+                why_card2_title: "Zamensko vozilo",
+                why_card2_text: "U slucaju limarije obezbedjujemo vozilo po dogovoru.",
+                why_card3_title: "Kvalitet limarije",
+                why_card3_text: "Precizan rad, dobar lak i kontrola zavrsne obrade.",
                 reviews_eyebrow: "Recenzije",
                 reviews_title: "Sta kazu nasi klijenti",
-                reviews_text: "Mnogo zadovoljnih putnika koji nam veruju za njihove putnje i popravke.",
+                reviews_text: "Mnogi zadovoljni klijenti koji nam vjeruju za rent a car i limariju.",
                 reviews_rating_based: "Na osnovu Google recenzija",
                 reviews_btn: "Pogledaj sve recenzije na Google-u",
                 contact_eyebrow: "Kontakt",
                 contact_title: "Tu smo kad god vam zatreba",
-                contact_text: "Posaljite upit za vozilo ili servis. Odgovaramo brzo.",
+                contact_text: "Posaljite upit za rent a car ili limariju. Odgovaramo brzo.",
                 contact_phone: "Telefon",
                 contact_email: "Email",
                 contact_address: "Adresa",
-                contact_form_title: "Brzi upit",
-                contact_form_text: "Unesite osnovne podatke i mi vas kontaktiramo.",
+                contact_form_title: "",
+                contact_form_text: "",
                 contact_name_label: "Ime i prezime",
                 contact_name_ph: "Vase ime",
                 contact_phone_label: "Telefon",
                 contact_phone_ph: "Broj telefona",
                 contact_message_label: "Poruka",
-                contact_message_ph: "Rent ili servis?",
+                contact_message_ph: "Rent ili limarija?",
                 contact_submit: "Posalji upit",
                 location_eyebrow: "Lokacija",
                 location_title: "Pronadji nas na mapi",
@@ -1587,37 +1825,37 @@
             },
             en: {
                 lang: "Language",
-                logo_tag: "rent a car / service",
+                logo_tag: "rent a car / bodywork",
                 nav_services: "Services",
                 nav_fleet: "Fleet",
                 nav_reviews: "Reviews",
-                nav_service: "Service",
+                nav_service: "Bodywork",
                 nav_contact: "Contact",
                 hero_eyebrow: "Reliable, fast, local",
-                hero_title: "TUO - rent a car and auto service in one place.",
-                hero_text: "Family business focused on clean cars, fair prices and service that solves it right away. Book a vehicle or schedule a check in a few steps.",
-                hero_cta_primary: "Book a vehicle",
-                hero_cta_secondary: "Schedule service",
-                hero_card_title: "Quick offer today",
-                hero_card_text: "Send a short message and get a reply within 30 minutes.",
+                hero_title: "TUO - rent a car and bodywork in one place.",
+                hero_text: "Family business focused on clean vehicles, fair prices and bodywork with a clear quote before any work. Book a car or schedule bodywork in a few steps.",
+                hero_cta_primary: "Reserve a car",
+                hero_cta_secondary: "Book bodywork",
+                hero_card_title: "Quick bodywork estimate",
+                hero_card_text: "Send a short description of the damage and get a reply within 30 minutes.",
                 hero_stat_1: "vehicles ready",
-                hero_stat_2: "roadside help",
+                hero_stat_2: "available",
                 hero_stat_3: "years of experience",
                 services_eyebrow: "Services",
-                services_title: "Rent a car + auto service",
-                services_text: "One team for everything: city drives, long trips, repairs, diagnostics and prep for inspection.",
+                services_title: "Rent a car + bodywork",
+                services_text: "One team for everything: car rental and bodywork with a clear estimate.",
                 services_card1_tag: "Rent a car",
                 services_card1_title: "Vehicles for every plan",
                 services_card1_text: "From small city cars to larger models for family or work.",
                 services_card2_tag: "Rent a car",
                 services_card2_title: "Delivery to address",
                 services_card2_text: "Pickup and return at the agreed location.",
-                services_card3_tag: "Service",
-                services_card3_title: "Fast diagnostics",
-                services_card3_text: "Precise checks with a clear cost estimate.",
-                services_card4_tag: "Service",
-                services_card4_title: "Regular service",
-                services_card4_text: "Small and big service, brakes, suspension, AC and trip prep.",
+                services_card3_tag: "Bodywork",
+                services_card3_title: "Repair and alignment",
+                services_card3_text: "Dent removal, panel replacement and prep for paint.",
+                services_card4_tag: "Bodywork",
+                services_card4_title: "Precise color match",
+                services_card4_text: "Color correction, paint by standard and protection.",
                 fleet_eyebrow: "Fleet",
                 fleet_title: "Vehicles most people request",
                 fleet_text: "We choose reliable models, regularly serviced and ready for safe driving.",
@@ -1646,43 +1884,43 @@
                 fleet_team_title: "Van",
                 fleet_team_text: "Ideal for groups and long trips without stress",
                 price_team: "from 65 EUR/day",
-                service_eyebrow: "Service",
-                service_title: "Mechanic team that works fast and clean",
-                service_text: "Owner supervises every job, and you get a clear quote before any work.",
-                service_list_1: "Inspection and diagnostics the same day",
-                service_list_2: "Original or verified parts by choice",
-                service_list_3: "Report of all work and recommendations",
-                service_cta_title: "Need an appointment?",
-                service_cta_text: "Call or message us, we check availability and confirm the slot.",
-                service_cta_btn: "Book now",
+                service_eyebrow: "Bodywork",
+                service_title: "Bodywork and paint without stress",
+                service_text: "Owner oversees every job, and you get a clear quote before any work.",
+                service_list_1: "Damage estimate and agreement the same day",
+                service_list_2: "Straightening, welding and panel replacement",
+                service_list_3: "Paint with precise color matching",
+                service_cta_title: "Need bodywork?",
+                service_cta_text: "Call or message us, we agree on the slot and timeline.",
+                service_cta_btn: "Book bodywork",
                 why_eyebrow: "Why TUO",
                 why_title: "Family business with local trust",
                 why_text: "We work openly, keep our word and think long-term.",
                 why_card1_title: "Transparent pricing",
                 why_card1_text: "No hidden costs - everything agreed in advance.",
-                why_card2_title: "Roadside help",
-                why_card2_text: "Fast assistance and replacement vehicle in emergencies.",
-                why_card3_title: "Safety",
-                why_card3_text: "Vehicles and service pass regular quality checks.",
+                why_card2_title: "Replacement car",
+                why_card2_text: "If needed during bodywork, we provide a car by agreement.",
+                why_card3_title: "Bodywork quality",
+                why_card3_text: "Precise work, good paint and final quality control.",
                 reviews_eyebrow: "Reviews",
                 reviews_title: "What our clients say",
-                reviews_text: "Many satisfied customers who trust us for rentals and repairs.",
+                reviews_text: "Many satisfied clients who trust us for rent a car and bodywork.",
                 reviews_rating_based: "Based on Google reviews",
                 reviews_btn: "See all reviews on Google",
                 contact_eyebrow: "Contact",
                 contact_title: "We are here when you need us",
-                contact_text: "Send a request for a vehicle or service. We reply fast.",
+                contact_text: "Send a request for rent a car or bodywork. We reply fast.",
                 contact_phone: "Phone",
                 contact_email: "Email",
                 contact_address: "Address",
-                contact_form_title: "Quick request",
-                contact_form_text: "Enter basic details and we will contact you.",
+                contact_form_title: "",
+                contact_form_text: "",
                 contact_name_label: "Full name",
                 contact_name_ph: "Your name",
                 contact_phone_label: "Phone",
                 contact_phone_ph: "Phone number",
                 contact_message_label: "Message",
-                contact_message_ph: "Rental or service?",
+                contact_message_ph: "Rental or bodywork?",
                 contact_submit: "Send request",
                 location_eyebrow: "Location",
                 location_title: "Find us on the map",
@@ -1692,37 +1930,37 @@
             },
             ru: {
                 lang: "Язык",
-                logo_tag: "аренда авто / сервис",
+                logo_tag: "аренда авто / кузов",
                 nav_services: "Услуги",
                 nav_fleet: "Автопарк",
                 nav_reviews: "Отзывы",
-                nav_service: "Сервис",
+                nav_service: "Кузов",
                 nav_contact: "Контакты",
                 hero_eyebrow: "Надежно, быстро, рядом",
-                hero_title: "TUO - аренда авто и автосервис в одном месте.",
-                hero_text: "Семейная компания: чистые автомобили, честные цены и сервис, который решает сразу. Бронируйте авто или записывайтесь на сервис в несколько шагов.",
+                hero_title: "TUO — аренда авто и кузовной ремонт в одном месте.",
+                hero_text: "Семейная компания: чистые автомобили, честные цены и кузовные работы с понятной сметой до начала. Забронируйте авто или запишитесь на кузов за пару шагов.",
                 hero_cta_primary: "Забронировать авто",
-                hero_cta_secondary: "Записаться на сервис",
-                hero_card_title: "Быстрое предложение сегодня",
-                hero_card_text: "Отправьте короткое сообщение и получите ответ за 30 минут.",
+                hero_cta_secondary: "Кузовной ремонт",
+                hero_card_title: "Быстрая оценка кузова",
+                hero_card_text: "Опишите повреждение и получите ответ за 30 минут.",
                 hero_stat_1: "авто готовы",
-                hero_stat_2: "помощь в пути",
+                hero_stat_2: "доступно",
                 hero_stat_3: "лет опыта",
                 services_eyebrow: "Услуги",
-                services_title: "Аренда авто + сервис",
-                services_text: "Одна команда для всего: городские поездки, дальние маршруты, ремонт, диагностика и подготовка к техосмотру.",
+                services_title: "Аренда авто + кузов",
+                services_text: "Одна команда для всего: прокат авто и кузовные работы с понятной оценкой.",
                 services_card1_tag: "Аренда",
                 services_card1_title: "Авто для любого плана",
                 services_card1_text: "От небольших городских до семейных моделей.",
                 services_card2_tag: "Аренда",
                 services_card2_title: "Доставка по адресу",
                 services_card2_text: "Выдача и возврат в согласованном месте.",
-                services_card3_tag: "Сервис",
-                services_card3_title: "Быстрая диагностика",
-                services_card3_text: "Точная проверка и понятная смета.",
-                services_card4_tag: "Сервис",
-                services_card4_title: "Регламентный сервис",
-                services_card4_text: "ТО, тормоза, подвеска, кондиционер и подготовка к дороге.",
+                services_card3_tag: "Кузов",
+                services_card3_title: "Ремонт и правка",
+                services_card3_text: "Удаление вмятин, замена элементов и подготовка к покраске.",
+                services_card4_tag: "Кузов",
+                services_card4_title: "Точный подбор цвета",
+                services_card4_text: "Коррекция цвета, покраска по стандарту и защита.",
                 fleet_eyebrow: "Автопарк",
                 fleet_title: "Самые востребованные авто",
                 fleet_text: "Надежные модели, регулярно обслуженные и готовые к поездке.",
@@ -1751,43 +1989,43 @@
                 fleet_team_title: "Минивэн",
                 fleet_team_text: "Идеально для групп и дальних поездок",
                 price_team: "от 65 EUR/день",
-                service_eyebrow: "Сервис",
-                service_title: "Команда механиков быстро и аккуратно",
+                service_eyebrow: "Кузов",
+                service_title: "Кузов и покраска без стресса",
                 service_text: "Владелец контролирует каждую работу, смета до начала ремонта.",
-                service_list_1: "Осмотр и диагностика в тот же день",
-                service_list_2: "Оригинальные или проверенные запчасти",
-                service_list_3: "Отчет по работам и рекомендациям",
-                service_cta_title: "Нужна запись?",
-                service_cta_text: "Позвоните или напишите, подтвердим время.",
-                service_cta_btn: "Записаться",
+                service_list_1: "Оценка повреждений и согласование в тот же день",
+                service_list_2: "Правка, сварка и замена элементов",
+                service_list_3: "Покраска с точным подбором цвета",
+                service_cta_title: "Нужен кузовной ремонт?",
+                service_cta_text: "Позвоните или напишите, согласуем время и сроки.",
+                service_cta_btn: "Записаться на кузов",
                 why_eyebrow: "Почему TUO",
                 why_title: "Семейный бизнес с доверием",
                 why_text: "Работаем открыто и держим слово.",
                 why_card1_title: "Прозрачные цены",
-                why_card1_text: "Без скрытых платежей.",
-                why_card2_title: "Помощь в пути",
-                why_card2_text: "Быстрая помощь и замена авто.",
-                why_card3_title: "Безопасность",
-                why_card3_text: "Регулярные проверки качества.",
+                why_card1_text: "Без скрытых платежей — все согласовано заранее.",
+                why_card2_title: "Замена авто",
+                why_card2_text: "При необходимости выдаем авто на время кузовных работ.",
+                why_card3_title: "Качество кузова",
+                why_card3_text: "Точная работа, хороший лак и финальная проверка.",
                 reviews_eyebrow: "Отзывы",
                 reviews_title: "Что говорят клиенты",
-                reviews_text: "Многие довольные клиенты, доверяющие нам аренду и сервис.",
+                reviews_text: "Многие довольные клиенты, доверяющие нам аренду авто и кузов.",
                 reviews_rating_based: "На основе отзывов Google",
                 reviews_btn: "Все отзывы на Google",
                 contact_eyebrow: "Контакты",
                 contact_title: "Мы рядом, когда нужно",
-                contact_text: "Отправьте запрос на авто или сервис. Отвечаем быстро.",
+                contact_text: "Отправьте запрос на аренду авто или кузовной ремонт. Отвечаем быстро.",
                 contact_phone: "Телефон",
                 contact_email: "Email",
                 contact_address: "Адрес",
-                contact_form_title: "Быстрый запрос",
-                contact_form_text: "Оставьте данные и мы свяжемся.",
+                contact_form_title: "",
+                contact_form_text: "",
                 contact_name_label: "Имя и фамилия",
                 contact_name_ph: "Ваше имя",
                 contact_phone_label: "Телефон",
                 contact_phone_ph: "Номер телефона",
                 contact_message_label: "Сообщение",
-                contact_message_ph: "Аренда или сервис?",
+                contact_message_ph: "Аренда или кузов?",
                 contact_submit: "Отправить",
                 location_eyebrow: "Локация",
                 location_title: "Найдите нас на карте",
@@ -1797,37 +2035,37 @@
             },
             de: {
                 lang: "Sprache",
-                logo_tag: "Autovermietung / Service",
+                logo_tag: "Autovermietung / Karosserie",
                 nav_services: "Leistungen",
                 nav_fleet: "Flotte",
                 nav_reviews: "Bewertungen",
-                nav_service: "Service",
+                nav_service: "Karosserie",
                 nav_contact: "Kontakt",
                 hero_eyebrow: "Zuverlaessig, schnell, lokal",
-                hero_title: "TUO - Autovermietung und Service an einem Ort.",
-                hero_text: "Familienbetrieb mit sauberen Autos, fairen Preisen und Service, der Probleme sofort loest. Auto reservieren oder Termin vereinbaren.",
+                hero_title: "TUO - Autovermietung und Karosserie an einem Ort.",
+                hero_text: "Familienbetrieb mit sauberen Autos, fairen Preisen und Karosseriearbeiten mit klarem Angebot vor Beginn. Auto reservieren oder Karosserie buchen.",
                 hero_cta_primary: "Auto reservieren",
-                hero_cta_secondary: "Service buchen",
-                hero_card_title: "Schnelles Angebot heute",
-                hero_card_text: "Kurze Nachricht senden und in 30 Minuten Antwort bekommen.",
+                hero_cta_secondary: "Karosserie buchen",
+                hero_card_title: "Schnelle Karosserie-Schaetzung",
+                hero_card_text: "Kurze Beschreibung des Schadens senden und in 30 Minuten Antwort bekommen.",
                 hero_stat_1: "Fahrzeuge bereit",
-                hero_stat_2: "Pannenhilfe",
+                hero_stat_2: "verfuegbar",
                 hero_stat_3: "Jahre Erfahrung",
                 services_eyebrow: "Leistungen",
-                services_title: "Autovermietung + Service",
-                services_text: "Ein Team fuer alles: Stadtfahrten, lange Reisen, Reparaturen, Diagnose und Vorbereitung.",
+                services_title: "Autovermietung + Karosserie",
+                services_text: "Ein Team fuer alles: Mietwagen und Karosseriearbeiten mit klarer Schaetzung.",
                 services_card1_tag: "Miete",
                 services_card1_title: "Fahrzeuge fuer jeden Plan",
                 services_card1_text: "Von kleinen Stadtautos bis zu Familienmodellen.",
                 services_card2_tag: "Miete",
                 services_card2_title: "Lieferung zur Adresse",
                 services_card2_text: "Abholung und Rueckgabe am vereinbarten Ort.",
-                services_card3_tag: "Service",
-                services_card3_title: "Schnelle Diagnose",
-                services_card3_text: "Praezise Pruefung mit klarer Kostenschaetzung.",
-                services_card4_tag: "Service",
-                services_card4_title: "Regelmaessiger Service",
-                services_card4_text: "Inspektion, Bremsen, Fahrwerk, Klima und Reisecheck.",
+                services_card3_tag: "Karosserie",
+                services_card3_title: "Reparatur und Richten",
+                services_card3_text: "Dellen entfernen, Teile ersetzen, Vorbereitung fuer Lack.",
+                services_card4_tag: "Karosserie",
+                services_card4_title: "Praeziser Farbton",
+                services_card4_text: "Farbkorrektur, Lackierung nach Standard und Schutz.",
                 fleet_eyebrow: "Flotte",
                 fleet_title: "Beliebteste Fahrzeuge",
                 fleet_text: "Zuverlaessige Modelle, regelmaessig gewartet und fahrbereit.",
@@ -1856,43 +2094,43 @@
                 fleet_team_title: "Van",
                 fleet_team_text: "Ideal fuer Gruppen und lange Fahrten",
                 price_team: "ab 65 EUR/Tag",
-                service_eyebrow: "Service",
-                service_title: "Mechanikerteam arbeitet schnell und sauber",
+                service_eyebrow: "Karosserie",
+                service_title: "Karosserie und Lack ohne Stress",
                 service_text: "Eigentuemer prueft jede Arbeit, klares Angebot vor Beginn.",
-                service_list_1: "Inspektion und Diagnose am selben Tag",
-                service_list_2: "Original- oder gepruefte Teile",
-                service_list_3: "Bericht ueber Arbeiten und Empfehlungen",
-                service_cta_title: "Termin noetig?",
-                service_cta_text: "Anrufen oder Nachricht senden, wir bestaetigen den Termin.",
-                service_cta_btn: "Jetzt buchen",
+                service_list_1: "Schaetzung und Vereinbarung am selben Tag",
+                service_list_2: "Richten, Schweissen und Teiletausch",
+                service_list_3: "Lack mit praezisem Farbton",
+                service_cta_title: "Karosserie noetig?",
+                service_cta_text: "Anrufen oder Nachricht senden, wir vereinbaren Termin und Frist.",
+                service_cta_btn: "Karosserie buchen",
                 why_eyebrow: "Warum TUO",
                 why_title: "Familienbetrieb mit lokalem Vertrauen",
                 why_text: "Offen, verbindlich und langfristig.",
                 why_card1_title: "Transparente Preise",
-                why_card1_text: "Keine versteckten Kosten.",
-                why_card2_title: "Pannenhilfe",
-                why_card2_text: "Schnelle Hilfe und Ersatzfahrzeug.",
-                why_card3_title: "Sicherheit",
-                why_card3_text: "Regelmaessige Qualitaetskontrollen.",
+                why_card1_text: "Keine versteckten Kosten - alles vorher vereinbart.",
+                why_card2_title: "Ersatzfahrzeug",
+                why_card2_text: "Bei Bedarf stellen wir waehrend der Karosserie ein Auto.",
+                why_card3_title: "Karosserie-Qualitaet",
+                why_card3_text: "Praezise Arbeit, guter Lack und Endkontrolle.",
                 reviews_eyebrow: "Bewertungen",
                 reviews_title: "Was unsere Kunden sagen",
-                reviews_text: "Viele zufriedene Kunden vertrauen uns Miete und Service an.",
+                reviews_text: "Viele zufriedene Kunden vertrauen uns Miete und Karosserie an.",
                 reviews_rating_based: "Basierend auf Google-Bewertungen",
                 reviews_btn: "Alle Google-Bewertungen ansehen",
                 contact_eyebrow: "Kontakt",
                 contact_title: "Wir sind da, wenn Sie uns brauchen",
-                contact_text: "Anfrage fuer Auto oder Service senden. Wir antworten schnell.",
+                contact_text: "Anfrage fuer Mietwagen oder Karosserie senden. Wir antworten schnell.",
                 contact_phone: "Telefon",
                 contact_email: "E-Mail",
                 contact_address: "Adresse",
-                contact_form_title: "Schnelle Anfrage",
-                contact_form_text: "Geben Sie Daten ein, wir melden uns.",
+                contact_form_title: "",
+                contact_form_text: "",
                 contact_name_label: "Vor- und Nachname",
                 contact_name_ph: "Ihr Name",
                 contact_phone_label: "Telefon",
                 contact_phone_ph: "Telefonnummer",
                 contact_message_label: "Nachricht",
-                contact_message_ph: "Miete oder Service?",
+                contact_message_ph: "Miete oder Karosserie?",
                 contact_submit: "Anfrage senden",
                 location_eyebrow: "Standort",
                 location_title: "Finden Sie uns auf der Karte",
@@ -1926,6 +2164,71 @@
             });
         }
         applyTranslations(initialLang);
+        function handleCopy(text, btn) {
+            const done = () => {
+                const original = btn.textContent;
+                btn.textContent = "Kopirano";
+                setTimeout(() => { btn.textContent = original; }, 1200);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done).catch(() => {});
+            } else {
+                const temp = document.createElement("textarea");
+                temp.value = text;
+                document.body.appendChild(temp);
+                temp.select();
+                try { document.execCommand("copy"); } catch (e) {}
+                document.body.removeChild(temp);
+                done();
+            }
+        }
+
+        document.querySelectorAll("[data-copy-btn]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const value = btn.getAttribute("data-copy-btn") || "";
+                if (value) handleCopy(value, btn);
+            });
+        });
+        const waPhone = "38268523604";
+        const waForm = document.getElementById("whatsappForm");
+        if (waForm) {
+            waForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const name = document.getElementById("contactName")?.value.trim();
+                const phone = document.getElementById("contactPhone")?.value.trim();
+                const message = document.getElementById("contactMessage")?.value.trim();
+                const lines = [];
+                if (name) lines.push(`Ime: ${name}`);
+                if (phone) lines.push(`Telefon: ${phone}`);
+                if (message) lines.push(`Poruka: ${message}`);
+                const text = encodeURIComponent(lines.join("\n"));
+                                const appUrl = `whatsapp://send?phone=${waPhone}&text=${text}`;
+                const webUrl = `https://wa.me/${waPhone}?text=${text}`;
+                const opened = window.open(appUrl, "_blank", "noopener");
+                if (!opened) {
+                    window.open(webUrl, "_blank", "noopener");
+                } else {
+                    setTimeout(() => {
+                        try { opened.location.href = webUrl; } catch (e) { }
+                    }, 1200);
+                }
+                window.open(url, "_blank", "noopener");
+            });
+        }
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
