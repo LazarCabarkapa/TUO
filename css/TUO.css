@@ -1,4 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@500;700&display=swap");
 
         :root {
             --bg-1: #1a1a1a;
@@ -1402,14 +1402,14 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.35);
         }
 
-        .gallery-toggle span {
+        .gallery-toggle-icon {
             display: inline-block;
             transition: transform 0.2s ease;
             font-size: 0.9rem;
             line-height: 1;
         }
 
-        .gallery-toggle.is-open span {
+        .gallery-toggle.is-open .gallery-toggle-icon {
             transform: rotate(180deg);
         }
 
