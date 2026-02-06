@@ -1,4 +1,4 @@
-﻿// Google Reviews Widget - Ucitavanje Google Business recenzija
+// Google Reviews Widget - Ucitavanje Google Business recenzija
         (function() {
             // Google Places Widget za TUO Rent a car
             const placeId = '0xe109918228f796af'; // Place ID za TUO
@@ -1047,13 +1047,9 @@ const translations = {
             await loadFleetFromStorage(lang);
             await loadGalleryFromStorage(lang);
 
-            const galleryToggleText = document.querySelector(".gallery-toggle-text");
             const galleryCollapsible = document.getElementById("galleryCollapsible");
-            if (galleryToggleText && galleryCollapsible) {
-                const isOpen = galleryCollapsible.classList.contains("is-open");
-                galleryToggleText.textContent = isOpen
-                    ? (dict.gallery_toggle_hide || "Sakrij")
-                    : (dict.gallery_toggle_show || "Prikazi sve");
+            if (galleryCollapsible) {
+                // Keep toggle text static; only arrow rotates via CSS.
             }
         }
 
@@ -1451,13 +1447,7 @@ const translations = {
             galleryToggle.addEventListener("click", () => {
                 const isOpen = galleryCollapsible.classList.toggle("is-open");
                 galleryToggle.classList.toggle("is-open", isOpen);
-                const textEl = galleryToggle.querySelector(".gallery-toggle-text");
-                const dict = translations[getCurrentLang()] || translations.me;
-                if (textEl) {
-                    textEl.textContent = isOpen
-                        ? (dict.gallery_toggle_hide || "Sakrij")
-                        : (dict.gallery_toggle_show || "Prikazi sve");
-                }
+                // Keep toggle text static; only arrow rotates via CSS.
             });
         }
 
